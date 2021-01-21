@@ -33,6 +33,13 @@ public class MPConfigResource {
     @ConfigProperty(name = "quantidade.elementos.pagina")
     Provider<Integer> quantidadeElementosPaginaP;
 
+    @Inject
+    @ConfigProperty(name = "email.corporativo")
+    Email email;
+
+
+
+
     @GET
     @Path("quantidade")
     @Produces(MediaType.TEXT_PLAIN)
