@@ -22,9 +22,9 @@ public class MPConfigResource {
     @Inject
     Config config;
 
-    @Inject
-    @ConfigProperty(name = "quantidade.elementos.pagina", defaultValue = "44")
-    Integer quantidadeElementosPagina;
+    //@Inject
+    //@ConfigProperty(name = "quantidade.elementos.pagina", defaultValue = "44")
+    //Integer quantidadeElementosPagina;
 
     @Inject
     @ConfigProperty(name = "quantidade.elementos.pagina")
@@ -51,7 +51,7 @@ public class MPConfigResource {
     @Path("quantidade")
     @Produces(MediaType.TEXT_PLAIN)
     public String getQuantidade() {
-        return quantidadeElementosPaginaP.toString();
+        return quantidadeElementosPaginaOp.toString();
     }
 
     @GET
