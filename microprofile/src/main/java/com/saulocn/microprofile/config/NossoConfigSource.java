@@ -20,7 +20,7 @@ public class NossoConfigSource implements ConfigSource {
 
     @Override
     public String getValue(String s) {
-        System.out.println("-----" + s);
+        //System.out.println("-----" + s);
         return propriedades.get(s);
     }
 

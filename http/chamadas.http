@@ -17,3 +17,7 @@ GET http://localhost:8080/mp-restclient/sem-cdi
 
 ###
 GET http://localhost:8080/mp-restclient/builder
+
+###
+GET http://localhost:8080/mp-restclient/builder
+CURL: TesteXPTO
