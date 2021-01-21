@@ -1,6 +1,10 @@
 package com.saulocn.microprofile;
 
-import java.util.Optional;
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.ConfigProvider;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.config.spi.ConfigSource;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -8,14 +12,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import org.eclipse.microprofile.config.Config;
-import org.eclipse.microprofile.config.ConfigProvider;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.config.spi.ConfigSource;
+import java.util.Optional;
 
 @Path("mp-config")
 @ApplicationScoped
+//@RequestScoped
 public class MPConfigResource {
 
     @Inject
@@ -37,7 +38,13 @@ public class MPConfigResource {
     @ConfigProperty(name = "email.corporativo")
     Email email;
 
+    //@Inject
+    //@ConfigProperty(name = "custom.config.source")
+    //String customConfigSource;
 
+    @Inject
+    @ConfigProperty(name = "custom.config.source")
+    Provider<String> customConfigSourceProvider;
 
 
     @GET
@@ -51,6 +58,7 @@ public class MPConfigResource {
     @Path("config-sources")
     @Produces(MediaType.TEXT_PLAIN)
     public String getConfigSources() {
+        customConfigSourceProvider.get();
         config = ConfigProvider.getConfig();
         final Iterable<ConfigSource> configSources = config.getConfigSources();
         final StringBuilder sb = new StringBuilder();
