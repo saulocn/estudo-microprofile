@@ -1,0 +1,9 @@
+###
+POST http://localhost:8080/municipios
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome": "Maceió",
+    "populacao": 1230912
+}

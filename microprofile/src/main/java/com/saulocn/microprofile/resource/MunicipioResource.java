@@ -22,6 +22,8 @@ public class MunicipioResource {
     private AtomicInteger geradorId = new AtomicInteger();
 
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public MunicipioDTO adicionar(@Context HttpHeaders headers, @QueryParam("idUF") Integer idUF, MunicipioDTO municipioDTO) {
         System.out.println("-----------------------------");
         System.out.println("Adicionando municipio");
