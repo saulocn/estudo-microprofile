@@ -21,7 +21,7 @@ mvn liberty:run -f pom-liberty.xml
 
 ## Config Sources
 
-A menos que o `config_ordinal` do config source seja de prioridade máxima, existem meios de sobrescrever as propriedades:
+A menos que o `config_ordinal` do config source seja de prioridade máxima, existem meios de sobrescrever as propriedades mesmo após o empacotamento:
 
 
 Por linha de comando:
