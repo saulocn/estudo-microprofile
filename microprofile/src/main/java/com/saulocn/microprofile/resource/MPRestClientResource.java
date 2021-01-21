@@ -27,7 +27,7 @@ public class MPRestClientResource {
         MunicipioDTO municipio = new MunicipioDTO();
         municipio.setNome("Maceió");
         municipio.setPopulacao(1234);
-        return municipioService.adicionar(idUf, municipio).toString();
+        return municipioService.adicionar("Valor1", idUf, municipio).toString();
     }
 
     @GET
@@ -38,7 +38,7 @@ public class MPRestClientResource {
         municipio.setNome("Maceió");
         municipio.setPopulacao(1234);
         MunicipioService service = CDI.current().select(MunicipioService.class, RestClient.LITERAL).get();
-        return municipioService.adicionar(idUf, municipio).toString();
+        return municipioService.adicionar("Valor2", idUf, municipio).toString();
     }
 
     @GET
@@ -50,7 +50,7 @@ public class MPRestClientResource {
         municipio.setPopulacao(1234);
         MunicipioService service = RestClientBuilder.newBuilder()
                 .baseUri(new URI("http://localhost:8080")).build(MunicipioService.class);
-        return municipioService.adicionar(idUf, municipio).toString();
+        return municipioService.adicionar("Valor3", idUf, municipio).toString();
     }
 
 }
