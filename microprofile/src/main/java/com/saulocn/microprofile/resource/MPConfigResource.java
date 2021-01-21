@@ -1,5 +1,6 @@
-package com.saulocn.microprofile;
+package com.saulocn.microprofile.resource;
 
+import com.saulocn.microprofile.config.Email;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.config.inject.ConfigProperty;

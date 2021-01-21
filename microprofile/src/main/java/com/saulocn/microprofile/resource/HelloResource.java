@@ -1,4 +1,4 @@
-package com.saulocn.microprofile;
+package com.saulocn.microprofile.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

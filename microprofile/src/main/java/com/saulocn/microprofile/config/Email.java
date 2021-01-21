@@ -1,4 +1,4 @@
-package com.saulocn.microprofile;
+package com.saulocn.microprofile.config;
 
 public class Email {
 

@@ -1,4 +1,4 @@
-package com.saulocn.microprofile;
+package com.saulocn.microprofile.config;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -12,10 +12,10 @@ public class HelloResourceTest {
     @Test
     public void testHelloEndpoint() {
         given()
-          .when().get("/hello")
-          .then()
-             .statusCode(200)
-             .body(is("hello"));
+                .when().get("/hello")
+                .then()
+                .statusCode(200)
+                .body(is("hello"));
     }
 
 }

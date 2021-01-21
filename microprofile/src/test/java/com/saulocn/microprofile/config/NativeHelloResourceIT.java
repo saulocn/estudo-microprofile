@@ -1,4 +1,4 @@
-package com.saulocn.microprofile;
+package com.saulocn.microprofile.config;
 
 import io.quarkus.test.junit.NativeImageTest;
 
