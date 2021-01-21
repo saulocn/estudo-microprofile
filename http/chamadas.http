@@ -7,3 +7,7 @@ Accept: application/json
     "nome": "Maceió",
     "populacao": 1230912
 }
+
+
+###
+GET http://localhost:8080/mp-restclient

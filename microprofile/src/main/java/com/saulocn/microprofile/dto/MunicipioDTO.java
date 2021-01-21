@@ -38,4 +38,14 @@ public class MunicipioDTO {
     public void setPopulacao(Integer populacao) {
         this.populacao = populacao;
     }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("MunicipioDTO{");
+        sb.append("id=").append(id);
+        sb.append(", nome='").append(nome).append('\'');
+        sb.append(", populacao=").append(populacao);
+        sb.append('}');
+        return sb.toString();
+    }
 }
