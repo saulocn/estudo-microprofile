@@ -21,3 +21,6 @@ GET http://localhost:8080/mp-restclient/builder
 ###
 GET http://localhost:8080/mp-restclient/builder
 CURL: TesteXPTO
+
+###
+GET http://localhost:8080/mp-restclient/async

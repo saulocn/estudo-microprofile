@@ -8,6 +8,7 @@ import org.eclipse.microprofile.rest.client.ext.DefaultClientHeadersFactoryImpl;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import javax.ws.rs.*;
+import java.util.concurrent.CompletionStage;
 
 @Path("municipios")
 @RegisterRestClient(configKey = "correios")
@@ -24,6 +25,9 @@ public interface MunicipioService {
 
     @POST
     public MunicipioDTO adicionar2(@BeanParam BeanParamSample beanParam);
+
+    @POST
+    public CompletionStage<MunicipioDTO> adicionarAsync(@HeaderParam("UsingHeaderParam") String header, @QueryParam("idUF") Integer idUF, MunicipioDTO municipioDTO);
 
     default String gerarToken(String header) {
         return header + "bla123";
