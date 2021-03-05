@@ -2,10 +2,8 @@ package com.saulocn.microprofile.service;
 
 import com.saulocn.microprofile.dto.MunicipioDTO;
 import com.saulocn.microprofile.params.BeanParamSample;
-import com.saulocn.microprofile.resource.CustomRequestFilter;
 import org.eclipse.microprofile.rest.client.annotation.ClientHeaderParam;
 import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
-import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.eclipse.microprofile.rest.client.ext.DefaultClientHeadersFactoryImpl;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
@@ -16,7 +14,7 @@ import java.util.concurrent.CompletionStage;
 @RegisterRestClient(configKey = "correios")
 @ClientHeaderParam(name = "UsingInterfaceHeaderParam", value = "InterfaceValue1")
 @RegisterClientHeaders(DefaultClientHeadersFactoryImpl.class)
-@RegisterProvider(CustomRequestFilter.class)
+//@RegisterProvider(CustomRequestFilter.class)
 public interface MunicipioService {
 
     @POST
