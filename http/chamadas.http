@@ -8,6 +8,14 @@ Accept: application/json
     "populacao": 1230912
 }
 
+###
+GET http://localhost:8080/municipios?idUF=2
+Accept: application/json
+
+Open Liberty
+###
+GET http://localhost:9080/municipios?idUF=2
+Accept: application/json
 
 ###
 GET http://localhost:8080/mp-restclient

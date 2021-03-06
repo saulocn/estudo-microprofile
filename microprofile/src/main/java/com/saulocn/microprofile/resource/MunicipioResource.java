@@ -9,6 +9,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -30,6 +31,14 @@ public class MunicipioResource {
 
         municipioDTO.setId(geradorId.incrementAndGet());
         return municipioDTO;
+    }
+
+    @GET
+    public List<MunicipioDTO> buscar(@QueryParam("idUF") Integer idUF) {
+        System.out.println("-----------------------------");
+        System.out.println("Adicionando municipio");
+
+        return Collections.emptyList();
     }
 
     private void printHeaders(HttpHeaders headers) {
