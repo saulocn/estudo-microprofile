@@ -14,7 +14,7 @@ Accept: application/json
 
 Open Liberty
 ###
-GET http://localhost:9080/municipios?idUF=2
+GET http://localhost:9080/municipios?idUF=1
 Accept: application/json
 
 ###
