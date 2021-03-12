@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,12 +26,15 @@ public class MPRestClientResource {
     MunicipioService municipioService;
 
     @GET
-    public String adicionarComGet() {
-        Integer idUf = 12;
+    public String adicionarComGet(@QueryParam("idUF") Integer idUF) {
+        if (idUF == null) {
+            idUF = 12;
+        }
+
         MunicipioDTO municipio = new MunicipioDTO();
         municipio.setNome("Maceió");
         municipio.setPopulacao(1234);
-        return municipioService.adicionar("Valor1", idUf, municipio).toString();
+        return municipioService.adicionar("Valor1", idUF, municipio).toString();
     }
 
     @GET

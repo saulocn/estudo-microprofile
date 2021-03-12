@@ -29,6 +29,14 @@ public class MunicipioResource {
 
         printHeaders(headers);
 
+        if (idUF.equals(0)) {
+            throw new NotFoundException("UF não encontrada");
+        }
+
+        if (idUF.equals(1)) {
+            throw new RuntimeException("Ocorreu um erro ao salvar o municipios");
+        }
+
         municipioDTO.setId(geradorId.incrementAndGet());
         return municipioDTO;
     }
@@ -36,8 +44,17 @@ public class MunicipioResource {
     @GET
     public List<MunicipioDTO> buscar(@QueryParam("idUF") Integer idUF) {
         System.out.println("-----------------------------");
-        System.out.println("Adicionando municipio");
+        System.out.println("Buscando municipio");
 
+
+        if (idUF.equals(0)) {
+            throw new NotFoundException("UF não encontrada");
+        }
+
+        if (idUF.equals(1)) {
+            throw new RuntimeException("Ocorreu um erro ao salvar o municipios");
+        }
+        
         return Collections.emptyList();
     }
 
