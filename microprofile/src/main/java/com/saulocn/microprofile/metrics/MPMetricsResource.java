@@ -1,6 +1,7 @@
 package com.saulocn.microprofile.metrics;
 
-import org.eclipse.microprofile.metrics.annotation.ConcurrentGauge;
+import org.eclipse.microprofile.metrics.MetricUnits;
+import org.eclipse.microprofile.metrics.annotation.Gauge;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
@@ -18,13 +19,9 @@ public class MPMetricsResource {
     //        name = "meuContador",
     //        absolute = true
     //)
-    @ConcurrentGauge
-    public String methodName() {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return "Hello";
+    //@ConcurrentGauge
+    @Gauge(unit = MetricUnits.NONE)
+    public Integer methodName() {
+        return "Hello".length();
     }
 }
