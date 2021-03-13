@@ -34,6 +34,9 @@ public class MunicipioResource {
         System.out.println("-----------------------------");
         System.out.println("Adicionando municipio");
 
+        System.out.println("Baggage Items do municipio resource");
+        tracer.activeSpan().context().baggageItems().forEach(System.out::println);
+
         printHeaders(headers);
 
         if (idUF.equals(0)) {

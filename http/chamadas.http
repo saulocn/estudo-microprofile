@@ -29,6 +29,15 @@ quarkus
 ###
 GET http://localhost:8080/mp-restclient?idUF=100
 
+Liberty
+###
+GET http://localhost:9080/mp-restclient/com-service-intermediario?idUF=100
+
+quarkus
+###
+GET http://localhost:8080/mp-restclient/com-service-intermediario?idUF=100
+
+
 ###
 GET http://localhost:8080/mp-restclient/sem-cdi
 

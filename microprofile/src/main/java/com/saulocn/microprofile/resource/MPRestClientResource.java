@@ -29,6 +29,9 @@ public class MPRestClientResource {
     @Inject
     Tracer tracer;
 
+    @Inject
+    ServicoIntermediario servicoIntermediario;
+
     @GET
     public String adicionarComGet(@QueryParam("idUF") Integer idUF) {
         tracer.activeSpan().log("Entrando no método GET");
@@ -42,6 +45,18 @@ public class MPRestClientResource {
 
         tracer.activeSpan().log("DTO criado...");
         return municipioService.adicionar("Valor1", idUF, municipio).toString();
+    }
+
+
+    @GET
+    @Path("com-service-intermediario")
+    public String adicionarComIntermediario(@QueryParam("idUF") Integer idUF) {
+        tracer.activeSpan().setBaggageItem("meu-baggage-item", "valor-do-baggage-item");
+        String retorno = servicoIntermediario.adicionarMunicipio(idUF);
+
+        System.out.println("Baggage Items do resource");
+        tracer.activeSpan().context().baggageItems().forEach(System.out::println);
+        return retorno;
     }
 
     @GET
