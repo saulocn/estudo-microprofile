@@ -70,13 +70,6 @@ OPTIONS http://localhost:9080/metrics/vendor
 Accept: application/json
 
 ###
-GET http://localhost:8080/mp-metrics
-
-
-###
-GET http://localhost:9080/mp-metrics
-
-###
 GET http://localhost:8080/mp-metrics/tambem
 
 
@@ -96,6 +89,16 @@ GET http://localhost:8080/mp-metrics-copia/tambem
 
 ###
 GET http://localhost:9080/mp-metrics-copia/tambem
+
+
+
+###
+GET http://localhost:8080/mp-metrics
+
+
+###
+GET http://localhost:9080/mp-metrics
+
 
 ###
 GET http://localhost:8080/metrics/application
