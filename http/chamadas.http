@@ -50,3 +50,33 @@ CURL: TesteXPTO
 
 ###
 GET http://localhost:8080/mp-restclient/async
+
+
+###
+OPTIONS http://localhost:8080/metrics/base
+Accept: application/json
+
+###
+OPTIONS http://localhost:9080/metrics/base
+Accept: application/json
+
+###
+OPTIONS http://localhost:8080/metrics/vendor
+Accept: application/json
+
+
+###
+OPTIONS http://localhost:9080/metrics/vendor
+Accept: application/json
+
+###
+OPTIONS http://localhost:8080/metrics/application
+Accept: application/json
+
+
+###
+OPTIONS http://localhost:9080/metrics/application
+Accept: application/json
+
+
+
