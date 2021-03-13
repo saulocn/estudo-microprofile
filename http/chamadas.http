@@ -77,6 +77,27 @@ GET http://localhost:8080/mp-metrics
 GET http://localhost:9080/mp-metrics
 
 ###
+GET http://localhost:8080/mp-metrics/tambem
+
+
+###
+GET http://localhost:9080/mp-metrics/tambem
+
+###
+GET http://localhost:8080/mp-metrics-copia
+
+
+###
+GET http://localhost:9080/mp-metrics-copia
+
+###
+GET http://localhost:8080/mp-metrics-copia/tambem
+
+
+###
+GET http://localhost:9080/mp-metrics-copia/tambem
+
+###
 GET http://localhost:8080/metrics/application
 Accept: application/json
 

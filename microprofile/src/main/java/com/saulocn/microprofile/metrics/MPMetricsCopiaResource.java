@@ -8,22 +8,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/mp-metrics")
+@Path("/mp-metrics-copia")
 @ApplicationScoped
-public class MPMetricsResource {
+public class MPMetricsCopiaResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Counted(
             name = "meuContador",
+            // No quarkus lança um erro por ter os metadados diferentes entre métricas reutilizáveis
+            //unit = MetricUnits.BYTES,
             absolute = true,
             reusable = true
     )
-    //@ConcurrentGauge
-    //@Gauge(unit = MetricUnits.NONE)
-    //@Metered
-    //@Timed
-    //@SimplyTimed
     public Integer methodName() {
         return "Hello".length();
     }
