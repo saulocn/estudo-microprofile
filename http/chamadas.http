@@ -70,12 +70,19 @@ OPTIONS http://localhost:9080/metrics/vendor
 Accept: application/json
 
 ###
-OPTIONS http://localhost:8080/metrics/application
+GET http://localhost:8080/mp-metrics
+
+
+###
+GET http://localhost:9080/mp-metrics
+
+###
+GET http://localhost:8080/metrics/application
 Accept: application/json
 
 
 ###
-OPTIONS http://localhost:9080/metrics/application
+GET http://localhost:9080/metrics/application
 Accept: application/json
 
 
