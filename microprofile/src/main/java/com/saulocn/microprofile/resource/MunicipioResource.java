@@ -36,6 +36,7 @@ public class MunicipioResource {
 
         System.out.println("Baggage Items do municipio resource");
         tracer.activeSpan().context().baggageItems().forEach(System.out::println);
+        tracer.activeSpan().setTag("MinhaTAG", "VALOR");
 
         printHeaders(headers);
 

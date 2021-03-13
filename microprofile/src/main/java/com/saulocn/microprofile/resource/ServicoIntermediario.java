@@ -2,6 +2,7 @@ package com.saulocn.microprofile.resource;
 
 import com.saulocn.microprofile.dto.MunicipioDTO;
 import com.saulocn.microprofile.service.MunicipioService;
+import io.opentracing.Span;
 import io.opentracing.Tracer;
 import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -27,11 +28,16 @@ public class ServicoIntermediario {
 
         tracer.activeSpan().setBaggageItem("meu-baggage-item-intermediario", "valor-do-baggage-item-intermediario");
 
+        Span span = tracer.buildSpan("Adicionando municipioREST").asChildOf(tracer.activeSpan()).withTag("tag-customizada", "valor-da-tag").start();
+
         MunicipioDTO municipio = new MunicipioDTO();
         municipio.setNome("Maceió");
         municipio.setPopulacao(1234);
 
         tracer.activeSpan().log("DTO criado...");
-        return municipioService.adicionar("Valor1", idUF, municipio).toString();
+        String retorno = municipioService.adicionar("Valor1", idUF, municipio).toString();
+
+        span.finish();
+        return retorno;
     }
 }
