@@ -8,3 +8,5 @@ clean:
 	./mvnw clean
 remove-jaeger:
 	docker rm -f jaeger-microprofile || true
+add-quarkus-metrics:
+	 mvn quarkus:add-extension -Dextensions="smallrye-metrics"
