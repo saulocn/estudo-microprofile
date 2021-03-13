@@ -1,6 +1,6 @@
 package com.saulocn.microprofile.metrics;
 
-import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
@@ -20,7 +20,8 @@ public class MPMetricsResource {
     //)
     //@ConcurrentGauge
     //@Gauge(unit = MetricUnits.NONE)
-    @Metered
+    //@Metered
+    @Timed
     public Integer methodName() {
         return "Hello".length();
     }
