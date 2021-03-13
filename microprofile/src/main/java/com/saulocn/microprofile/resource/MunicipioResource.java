@@ -2,8 +2,10 @@ package com.saulocn.microprofile.resource;
 
 
 import com.saulocn.microprofile.dto.MunicipioDTO;
+import io.opentracing.Tracer;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
@@ -20,10 +22,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ApplicationScoped
 public class MunicipioResource {
 
-    private AtomicInteger geradorId = new AtomicInteger();
+    private final AtomicInteger geradorId = new AtomicInteger();
+
+    @Inject
+    Tracer tracer;
+
 
     @POST
     public MunicipioDTO adicionar(@Context HttpHeaders headers, @QueryParam("idUF") Integer idUF, MunicipioDTO municipioDTO) {
+        tracer.activeSpan().log("Post chamado");
         System.out.println("-----------------------------");
         System.out.println("Adicionando municipio");
 
@@ -36,8 +43,16 @@ public class MunicipioResource {
         if (idUF.equals(1)) {
             throw new RuntimeException("Ocorreu um erro ao salvar o municipios");
         }
+        tracer.activeSpan().log("Validações realizadas");
 
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         municipioDTO.setId(geradorId.incrementAndGet());
+        tracer.activeSpan().log("Salvo no banco ");
         return municipioDTO;
     }
 
@@ -54,7 +69,7 @@ public class MunicipioResource {
         if (idUF.equals(1)) {
             throw new RuntimeException("Ocorreu um erro ao salvar o municipios");
         }
-        
+
         return Collections.emptyList();
     }
 

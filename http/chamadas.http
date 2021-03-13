@@ -9,12 +9,12 @@ Accept: application/json
 }
 
 ###
-GET http://localhost:8080/municipios?idUF=2
+GET http://localhost:8080/municipios?idUF=4
 Accept: application/json
 
 Open Liberty
 ###
-GET http://localhost:9080/municipios?idUF=1
+GET http://localhost:9080/municipios?idUF=41
 Accept: application/json
 
 ###
@@ -24,6 +24,10 @@ GET http://localhost:8080/mp-restclient?idUF=10
 Liberty
 ###
 GET http://localhost:9080/mp-restclient?idUF=100
+
+quarkus
+###
+GET http://localhost:8080/mp-restclient?idUF=100
 
 ###
 GET http://localhost:8080/mp-restclient/sem-cdi

@@ -2,6 +2,7 @@ package com.saulocn.microprofile.resource;
 
 import com.saulocn.microprofile.dto.MunicipioDTO;
 import com.saulocn.microprofile.service.MunicipioService;
+import io.opentracing.Tracer;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -25,8 +26,12 @@ public class MPRestClientResource {
     @RestClient
     MunicipioService municipioService;
 
+    @Inject
+    Tracer tracer;
+
     @GET
     public String adicionarComGet(@QueryParam("idUF") Integer idUF) {
+        tracer.activeSpan().log("Entrando no método GET");
         if (idUF == null) {
             idUF = 12;
         }
@@ -34,6 +39,8 @@ public class MPRestClientResource {
         MunicipioDTO municipio = new MunicipioDTO();
         municipio.setNome("Maceió");
         municipio.setPopulacao(1234);
+
+        tracer.activeSpan().log("DTO criado...");
         return municipioService.adicionar("Valor1", idUF, municipio).toString();
     }
 
