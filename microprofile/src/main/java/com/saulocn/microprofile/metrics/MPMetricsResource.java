@@ -1,6 +1,6 @@
 package com.saulocn.microprofile.metrics;
 
-import org.eclipse.microprofile.metrics.annotation.Counted;
+import org.eclipse.microprofile.metrics.annotation.ConcurrentGauge;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
@@ -14,11 +14,11 @@ public class MPMetricsResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Counted(
-            name = "meuContador",
-            absolute = true
-    )
-    //@ConcurrentGauge
+    //@Counted(
+    //        name = "meuContador",
+    //        absolute = true
+    //)
+    @ConcurrentGauge
     public String methodName() {
         try {
             Thread.sleep(5000);
