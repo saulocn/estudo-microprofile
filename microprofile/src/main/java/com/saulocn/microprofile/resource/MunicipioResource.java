@@ -3,6 +3,7 @@ package com.saulocn.microprofile.resource;
 
 import com.saulocn.microprofile.dto.MunicipioDTO;
 import io.opentracing.Tracer;
+import org.eclipse.microprofile.opentracing.Traced;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @ApplicationScoped
+@Traced(value = false)
 public class MunicipioResource {
 
     private final AtomicInteger geradorId = new AtomicInteger();
