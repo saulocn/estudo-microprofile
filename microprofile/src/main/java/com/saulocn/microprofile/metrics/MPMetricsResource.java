@@ -30,6 +30,7 @@ public class MPMetricsResource {
     //@SimplyTimed
     public Integer methodName() {
         mpService.metodo1();
+        mpService.metodo1();
         return "Hello".length();
     }
 
