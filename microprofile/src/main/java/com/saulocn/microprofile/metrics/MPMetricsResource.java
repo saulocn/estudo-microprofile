@@ -71,7 +71,7 @@ public class MPMetricsResource {
             reusable = true
     )*/
     //@ConcurrentGauge
-    //@Gauge(unit = MetricUnits.NONE)
+    //@org.eclipse.microprofile.metrics.annotation.Gauge(name = "hitPercentage", unit = MetricUnits.NONE, tags = "tag=tag")
     //@Metered
     //@Timed
     //@SimplyTimed
@@ -84,6 +84,7 @@ public class MPMetricsResource {
         histogram.update(123);
         //simpleTimer.time();
         concurrentGauge.inc();
+        hitPercentage.
         return "Hello " + classeCustomizada.fazAlgo();
     }
 
