@@ -132,6 +132,10 @@ public class MPMetricsResource {
     @Path("criar-metricas")
     public String criarMetricas() {
         Counter counter = metricRegistry.counter("contador-2");
+        Metadata metadata = Metadata.builder().withName("contador-2").withUnit("Kg").build();
+
+        // Dá erro no quarkus
+        //Counter counter2 = metricRegistry.counter(metadata);
         counter.inc();
         return "OK " + counter.getCount();
     }
@@ -139,6 +143,7 @@ public class MPMetricsResource {
     @GET
     @Path("apagar-metricas")
     public String apagarMetricas() {
+        metricRegistry.remove("contador-2");
         return "OK ";
     }
 }
