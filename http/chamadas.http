@@ -111,3 +111,18 @@ Accept: application/json
 
 
 
+
+
+###
+GET http://localhost:8080/mp-metrics/criar-metricas
+
+
+###
+GET http://localhost:9080/mp-metrics/criar-metricas
+
+###
+GET http://localhost:8080/mp-metrics/apagar-metricas
+
+
+###
+GET http://localhost:9080/mp-metrics/apagar-metricas

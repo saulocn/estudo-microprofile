@@ -3,6 +3,7 @@ package com.saulocn.microprofile.metrics;
 import com.saulocn.microprofile.metrics.service.MPService;
 import org.eclipse.microprofile.metrics.*;
 import org.eclipse.microprofile.metrics.annotation.Metric;
+import org.eclipse.microprofile.metrics.annotation.RegistryType;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -36,6 +37,18 @@ public class MPMetricsResource {
     @Inject
     @Metric(name = "histogram")
     Histogram histogram;
+
+
+    @Inject
+    MetricRegistry metricRegistry;
+
+    @Inject
+    @RegistryType(type = MetricRegistry.Type.BASE)
+    MetricRegistry baseMetricRegistry;
+
+    @Inject
+    @RegistryType(type = MetricRegistry.Type.VENDOR)
+    MetricRegistry vendorMetricRegistry;
 
     //Não rolou no Liberty
     //@Inject
@@ -112,5 +125,20 @@ public class MPMetricsResource {
     )*/
     public Integer methodName2() {
         return "Hello".length();
+    }
+
+
+    @GET
+    @Path("criar-metricas")
+    public String criarMetricas() {
+        Counter counter = metricRegistry.counter("contador-2");
+        counter.inc();
+        return "OK " + counter.getCount();
+    }
+
+    @GET
+    @Path("apagar-metricas")
+    public String apagarMetricas() {
+        return "OK ";
     }
 }
