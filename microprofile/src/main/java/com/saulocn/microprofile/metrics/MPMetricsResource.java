@@ -1,6 +1,8 @@
 package com.saulocn.microprofile.metrics;
 
 import com.saulocn.microprofile.metrics.service.MPService;
+import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.annotation.Metric;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,6 +21,10 @@ public class MPMetricsResource {
     @Inject
     ClasseCustomizada classeCustomizada;
 
+    @Inject
+    @Metric(name = "applicationCount")
+    Counter counter;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     /*@Counted(
@@ -34,6 +40,7 @@ public class MPMetricsResource {
     public String methodName() {
         mpService.metodo1();
         mpService.metodo1();
+        counter.inc(2);
         return "Hello " + classeCustomizada.fazAlgo();
     }
 
