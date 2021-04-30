@@ -52,8 +52,19 @@ public class MPMetricsResource {
     //    instances.inc(3);
     //}
 
+    @javax.enterprise.inject.Produces
+    @Metric(name = "hitPercentage")
+    @ApplicationScoped
+    Gauge<Double> hitPercentage = new Gauge<Double>() {
+        @Override
+        public Double getValue() {
+            return 10 / 40.2;
+        }
+    };
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+
     /*@Counted(
             name = "meuContador",
             absolute = true,
