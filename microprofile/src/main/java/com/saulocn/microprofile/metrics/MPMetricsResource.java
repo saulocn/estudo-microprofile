@@ -2,6 +2,7 @@ package com.saulocn.microprofile.metrics;
 
 import com.saulocn.microprofile.metrics.service.MPService;
 import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.Histogram;
 import org.eclipse.microprofile.metrics.Meter;
 import org.eclipse.microprofile.metrics.Timer;
 import org.eclipse.microprofile.metrics.annotation.Metric;
@@ -35,6 +36,10 @@ public class MPMetricsResource {
     @Metric(name = "timer")
     Timer timer;
 
+    @Inject
+    @Metric(name = "histogram")
+    Histogram histogram;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     /*@Counted(
@@ -53,6 +58,7 @@ public class MPMetricsResource {
         counter.inc(2);
         meter.mark(10);
         timer.time();
+        histogram.update(123);
         return "Hello " + classeCustomizada.fazAlgo();
     }
 
