@@ -46,6 +46,12 @@ public class MPMetricsResource {
     @Metric(name = "concurrentGauge")
     ConcurrentGauge concurrentGauge;
 
+    // Não funcionou no OpenLiberty
+    @Inject
+    public MPMetricsResource(@Metric(name = "instances") Counter instances) {
+        instances.inc(3);
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     /*@Counted(
