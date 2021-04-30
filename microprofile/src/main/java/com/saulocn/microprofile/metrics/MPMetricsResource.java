@@ -16,6 +16,9 @@ public class MPMetricsResource {
     @Inject
     MPService mpService;
 
+    @Inject
+    ClasseCustomizada classeCustomizada;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     /*@Counted(
@@ -28,10 +31,10 @@ public class MPMetricsResource {
     //@Metered
     //@Timed
     //@SimplyTimed
-    public Integer methodName() {
+    public String methodName() {
         mpService.metodo1();
         mpService.metodo1();
-        return "Hello".length();
+        return "Hello " + classeCustomizada.fazAlgo();
     }
 
     @GET
