@@ -1,10 +1,7 @@
 package com.saulocn.microprofile.metrics;
 
 import com.saulocn.microprofile.metrics.service.MPService;
-import org.eclipse.microprofile.metrics.Counter;
-import org.eclipse.microprofile.metrics.Histogram;
-import org.eclipse.microprofile.metrics.Meter;
-import org.eclipse.microprofile.metrics.Timer;
+import org.eclipse.microprofile.metrics.*;
 import org.eclipse.microprofile.metrics.annotation.Metric;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -40,6 +37,15 @@ public class MPMetricsResource {
     @Metric(name = "histogram")
     Histogram histogram;
 
+    //Não rolou no Liberty
+    //@Inject
+    //@Metric(name = "simpleTimer")
+    //SimpleTimer simpleTimer;
+
+    @Inject
+    @Metric(name = "concurrentGauge")
+    ConcurrentGauge concurrentGauge;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     /*@Counted(
@@ -59,6 +65,8 @@ public class MPMetricsResource {
         meter.mark(10);
         timer.time();
         histogram.update(123);
+        //simpleTimer.time();
+        concurrentGauge.inc();
         return "Hello " + classeCustomizada.fazAlgo();
     }
 
