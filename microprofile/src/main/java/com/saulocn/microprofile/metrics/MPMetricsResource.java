@@ -52,15 +52,29 @@ public class MPMetricsResource {
     //    instances.inc(3);
     //}
 
+    /* Não funcionou no Quarkus
     @javax.enterprise.inject.Produces
-    @Metric(name = "hitPercentage")
+    @Metric(name = "counter2")
     @ApplicationScoped
-    Gauge<Double> hitPercentage = new Gauge<Double>() {
+    Counter counter2 = new Counter() {
+        int i = 0;
+
         @Override
-        public Double getValue() {
-            return 10 / 40.2;
+        public void inc() {
+            i++;
         }
-    };
+
+        @Override
+        public void inc(long l) {
+            i += l;
+        }
+
+        @Override
+        public long getCount() {
+            return i;
+        }
+    };*/
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -84,7 +98,7 @@ public class MPMetricsResource {
         histogram.update(123);
         //simpleTimer.time();
         concurrentGauge.inc();
-        hitPercentage.
+        //counter2.inc(20);
         return "Hello " + classeCustomizada.fazAlgo();
     }
 
