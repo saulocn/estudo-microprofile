@@ -2,6 +2,8 @@ package com.saulocn.microprofile.metrics;
 
 import com.saulocn.microprofile.metrics.service.MPService;
 import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.Meter;
+import org.eclipse.microprofile.metrics.Timer;
 import org.eclipse.microprofile.metrics.annotation.Metric;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -22,8 +24,16 @@ public class MPMetricsResource {
     ClasseCustomizada classeCustomizada;
 
     @Inject
-    @Metric(name = "applicationCount")
+    @Metric(name = "contador")
     Counter counter;
+
+    @Inject
+    @Metric(name = "meter")
+    Meter meter;
+
+    @Inject
+    @Metric(name = "timer")
+    Timer timer;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +51,8 @@ public class MPMetricsResource {
         mpService.metodo1();
         mpService.metodo1();
         counter.inc(2);
+        meter.mark(10);
+        timer.time();
         return "Hello " + classeCustomizada.fazAlgo();
     }
 
