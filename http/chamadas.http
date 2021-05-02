@@ -135,3 +135,10 @@ GET http://localhost:8080/mp-metrics/apagar-metricas
 
 ###
 GET http://localhost:9080/mp-metrics/apagar-metricas
+
+
+###
+GET http://localhost:9080/mp-fault/timeout?sleep=300
+
+###
+GET http://localhost:8080/mp-fault/timeout?sleep=300
