@@ -167,3 +167,12 @@ GET http://localhost:9080/mp-fault/circuit-breaker?erro=false
 
 ###
 GET http://localhost:8080/mp-fault/circuit-breaker?erro=false
+
+
+###
+GET http://localhost:9080/mp-fault/bulkhead
+
+###
+GET http://localhost:8080/mp-fault/bulkhead
+
+

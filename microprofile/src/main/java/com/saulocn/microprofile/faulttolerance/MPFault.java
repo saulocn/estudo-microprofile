@@ -1,9 +1,6 @@
 package com.saulocn.microprofile.faulttolerance;
 
-import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
-import org.eclipse.microprofile.faulttolerance.Fallback;
-import org.eclipse.microprofile.faulttolerance.Retry;
-import org.eclipse.microprofile.faulttolerance.Timeout;
+import org.eclipse.microprofile.faulttolerance.*;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
@@ -89,6 +86,21 @@ public class MPFault {
         if (erro) {
             throw new Exception("Erro!");
         }
+        return "Hello com circuit breaker!";
+    }
+
+
+    @GET
+    @Path("bulkhead")
+    @Produces(MediaType.APPLICATION_JSON)
+    // Não funcionou no Liberty
+    @Bulkhead(
+            value = 3,
+            // O waitingTaskQueue funcionaria em um método assíncrono
+            waitingTaskQueue = 10
+    )
+    public String bulkhead(@QueryParam("erro") Boolean erro) throws Throwable {
+        Thread.sleep(10000);
         return "Hello com circuit breaker!";
     }
 
