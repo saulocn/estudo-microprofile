@@ -2,6 +2,7 @@ package com.saulocn.microprofile.service;
 
 import com.saulocn.microprofile.dto.MunicipioDTO;
 import com.saulocn.microprofile.params.BeanParamSample;
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.rest.client.annotation.ClientHeaderParam;
 import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
 import org.eclipse.microprofile.rest.client.ext.DefaultClientHeadersFactoryImpl;
@@ -32,5 +33,15 @@ public interface MunicipioService {
 
     default String gerarToken(String header) {
         return header + "bla123";
+    }
+
+    @GET
+    @Fallback(
+            fallbackMethod = "criarMunicipioFixo"
+    )
+    MunicipioDTO buscarMunicipio();
+
+    default MunicipioDTO criarMunicipioFixo() {
+        return new MunicipioDTO(1, "Juazeiro do Norte", 230111);
     }
 }

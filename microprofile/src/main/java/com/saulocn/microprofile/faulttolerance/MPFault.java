@@ -1,8 +1,12 @@
 package com.saulocn.microprofile.faulttolerance;
 
+import com.saulocn.microprofile.dto.MunicipioDTO;
+import com.saulocn.microprofile.service.MunicipioService;
 import org.eclipse.microprofile.faulttolerance.*;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -22,6 +26,10 @@ public class MPFault {
 
     static AtomicInteger atomicInteger = new AtomicInteger();
 
+    @Inject
+    @RestClient
+    MunicipioService municipioService;
+
     @GET
     @Path("timeout")
     @Produces(MediaType.APPLICATION_JSON)
@@ -29,6 +37,14 @@ public class MPFault {
     public String timeout(@QueryParam("sleep") Integer sleep) throws InterruptedException {
         Thread.sleep(sleep);
         return "Hello com timeout!";
+    }
+
+
+    @GET
+    @Path("rest-client")
+    @Produces(MediaType.APPLICATION_JSON)
+    public MunicipioDTO restClient() {
+        return municipioService.buscarMunicipio();
     }
 
     @GET
