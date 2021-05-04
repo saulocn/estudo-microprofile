@@ -2,7 +2,7 @@ package com.saulocn.microprofile.faulttolerance;
 
 import org.eclipse.microprofile.faulttolerance.*;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -11,7 +11,10 @@ import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Path("mp-fault")
-@RequestScoped
+//@RequestScoped
+// Para funcionar o circuit breaker e o bulkhead no Open Liberty, o Resource precisa ser Application Scoped,
+// apesar de não fazer parte da especificação
+@ApplicationScoped
 public class MPFault {
 
     AtomicInteger atomicInteger = new AtomicInteger();
