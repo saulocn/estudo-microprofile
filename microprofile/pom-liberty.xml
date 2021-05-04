@@ -25,7 +25,7 @@
         <version.derby>10.14.2.0</version.derby>
         <derby.path>${user.home}/.m2/repository/org/apache/derby/derby</derby.path>
         <liberty.var.derby.lib>${derby.path}/${version.derby}/derby-${version.derby}.jar</liberty.var.derby.lib>
-
+          
     </properties>
 
     <dependencies>
