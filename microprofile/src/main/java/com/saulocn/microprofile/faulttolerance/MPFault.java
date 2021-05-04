@@ -1,5 +1,6 @@
 package com.saulocn.microprofile.faulttolerance;
 
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
@@ -71,6 +72,24 @@ public class MPFault {
     // a assinatura deve ser igual
     public String meuFallback(@QueryParam("erro") Boolean erro) {
         return "Hello do método de fallback!";
+    }
+
+
+    @GET
+    @Path("circuit-breaker")
+    @Produces(MediaType.APPLICATION_JSON)
+    // Não funcionou no Liberty
+    @CircuitBreaker(
+            delay = 10000,
+            successThreshold = 5,
+            failureRatio = 0.2,
+            requestVolumeThreshold = 4
+    )
+    public String circuitBreaker(@QueryParam("erro") Boolean erro) throws Throwable {
+        if (erro) {
+            throw new Exception("Erro!");
+        }
+        return "Hello com circuit breaker!";
     }
 
 }

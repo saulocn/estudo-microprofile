@@ -155,3 +155,15 @@ GET http://localhost:9080/mp-fault/fallback?erro=true
 
 ###
 GET http://localhost:8080/mp-fault/fallback?erro=true
+
+###
+GET http://localhost:9080/mp-fault/circuit-breaker?erro=true
+
+###
+GET http://localhost:8080/mp-fault/circuit-breaker?erro=true
+
+###
+GET http://localhost:9080/mp-fault/circuit-breaker?erro=false
+
+###
+GET http://localhost:8080/mp-fault/circuit-breaker?erro=false
