@@ -8,6 +8,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Path("mp-fault")
@@ -17,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ApplicationScoped
 public class MPFault {
 
-    AtomicInteger atomicInteger = new AtomicInteger();
+    static AtomicInteger atomicInteger = new AtomicInteger();
 
     @GET
     @Path("timeout")
@@ -78,7 +81,6 @@ public class MPFault {
     @GET
     @Path("circuit-breaker")
     @Produces(MediaType.APPLICATION_JSON)
-    // Não funcionou no Liberty
     @CircuitBreaker(
             delay = 10000,
             successThreshold = 5,
@@ -96,7 +98,6 @@ public class MPFault {
     @GET
     @Path("bulkhead")
     @Produces(MediaType.APPLICATION_JSON)
-    // Não funcionou no Liberty
     @Bulkhead(
             value = 3,
             // O waitingTaskQueue funcionaria em um método assíncrono
@@ -107,4 +108,53 @@ public class MPFault {
         return "Hello com circuit breaker!";
     }
 
+
+    @GET
+    @Path("future")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Asynchronous
+    @Bulkhead(
+            value = 3,
+            waitingTaskQueue = 1
+    )
+    public Future<String> future(@QueryParam("erro") Boolean erro) throws Throwable {
+        Thread.sleep(6000);
+        CompletableFuture<String> retorno = new CompletableFuture<>();
+        retorno.completeAsync(MPFault::successo);
+        return retorno;
+    }
+
+
+    @GET
+    @Path("future-retry")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Asynchronous
+    @Retry(maxRetries = 3)
+    public Future<String> futureRetry(@QueryParam("erro") Boolean erro) throws Throwable {
+        atomicInteger.incrementAndGet();
+        CompletableFuture<String> retorno = new CompletableFuture<>();
+        retorno.completeAsync(MPFault::falha);
+        return retorno;
+    }
+
+
+    @GET
+    @Path("future-stage")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Asynchronous
+    @Retry(maxRetries = 3)
+    public CompletionStage<String> futureStage(@QueryParam("erro") Boolean erro) throws Throwable {
+        atomicInteger.incrementAndGet();
+        CompletableFuture<String> retorno = new CompletableFuture<>();
+        retorno.completeAsync(MPFault::falha);
+        return retorno;
+    }
+
+    private static String successo() {
+        return "sucesso";
+    }
+
+    private static String falha() {
+        throw new NullPointerException("Null: " + atomicInteger.get());
+    }
 }

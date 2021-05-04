@@ -175,4 +175,22 @@ GET http://localhost:9080/mp-fault/bulkhead
 ###
 GET http://localhost:8080/mp-fault/bulkhead
 
+###
+GET http://localhost:9080/mp-fault/future
+
+###
+GET http://localhost:8080/mp-fault/future
+
+###
+GET http://localhost:9080/mp-fault/future-retry
+
+###
+GET http://localhost:8080/mp-fault/future-retry
+
+###
+GET http://localhost:9080/mp-fault/future-stage
+
+###
+GET http://localhost:8080/mp-fault/future-stage
+
 
