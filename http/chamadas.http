@@ -147,4 +147,11 @@ GET http://localhost:8080/mp-fault/timeout?sleep=300
 GET http://localhost:9080/mp-fault/retry?erros=1
 
 ###
-GET http://localhost:8080/mp-fault/retry?erros=10
+GET http://localhost:8080/mp-fault/retry?erros=6
+
+
+###
+GET http://localhost:9080/mp-fault/fallback?erro=true
+
+###
+GET http://localhost:8080/mp-fault/fallback?erro=true

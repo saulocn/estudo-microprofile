@@ -1,5 +1,6 @@
 package com.saulocn.microprofile.faulttolerance;
 
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.faulttolerance.Timeout;
 
@@ -47,4 +48,29 @@ public class MPFault {
         }
         return "Hello com retry!";
     }
+
+    @GET
+    @Path("fallback")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Fallback(
+            //fallbackMethod = "meuFallback",
+            // pode ser a classe como abaixo, ou um método como acima,
+            value = MeuFallBack.class,
+            // O Quarkus considera quando se é um Throwable, mas o OpenLiberty não
+            // skipOn = MyThrowable.class,
+            applyOn = MyThrowable.class
+    )
+    public String fallback(@QueryParam("erro") Boolean erro) throws Throwable {
+        if (erro) {
+            //throw new Exception("Erro: " + atomicInteger.get());
+            throw new MyThrowable();
+        }
+        return "Hello com fallback!";
+    }
+
+    // a assinatura deve ser igual
+    public String meuFallback(@QueryParam("erro") Boolean erro) {
+        return "Hello do método de fallback!";
+    }
+
 }
