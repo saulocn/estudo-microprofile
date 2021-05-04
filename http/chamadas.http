@@ -200,3 +200,31 @@ GET http://localhost:9080/mp-fault/rest-client
 GET http://localhost:8080/mp-fault/rest-client
 
 
+
+###
+GET http://localhost:9080/mp-jwt/permit-all
+
+###
+GET http://localhost:8080/mp-jwt/permit-all
+
+
+
+###
+GET http://localhost:9080/mp-jwt/deny-all
+
+###
+GET http://localhost:8080/mp-jwt/deny-all
+
+###
+GET http://localhost:9080/mp-jwt/proprietario
+
+###
+GET http://localhost:8080/mp-jwt/proprietario
+
+###
+GET http://localhost:9080/mp-jwt/ajudante
+
+###
+GET http://localhost:8080/mp-jwt/ajudante
+
+

@@ -16,6 +16,7 @@
         <feature>mpFaultTolerance-2.1</feature>
         <feature>mpHealth-2.2</feature>
         <feature>jpa-2.2</feature>
+        <feature>mpJwt-1.1</feature>
 
 
         <!--
@@ -35,15 +36,15 @@
     <variable name="derby.lib" defaultValue="${shared.resource.dir}/derby-10.14.2.0.jar"/>
 
     <library id="derbyJDBCLib">
-        <file name="${derby.lib}" />
+        <file name="${derby.lib}"/>
     </library>
 
-    <datasource 
-        id="eventjpadatasource"
-        jndiName="jdbc/eventjpadatasource"
+    <datasource
+            id="eventjpadatasource"
+            jndiName="jdbc/eventjpadatasource"
     >
-        <jdbcDriver libraryRef="derbyJDBCLib" />
-        <properties.derby.embedded databaseName="EventDB"  createDatabase="create" />
+        <jdbcDriver libraryRef="derbyJDBCLib"/>
+        <properties.derby.embedded databaseName="EventDB" createDatabase="create"/>
     </datasource>
 
     <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
