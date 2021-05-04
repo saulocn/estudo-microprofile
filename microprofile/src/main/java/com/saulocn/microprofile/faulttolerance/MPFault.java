@@ -26,7 +26,6 @@ public class MPFault {
     @Path("timeout")
     @Produces(MediaType.APPLICATION_JSON)
     @Timeout(200)
-
     public String timeout(@QueryParam("sleep") Integer sleep) throws InterruptedException {
         Thread.sleep(sleep);
         return "Hello com timeout!";
@@ -59,15 +58,15 @@ public class MPFault {
     @Fallback(
             //fallbackMethod = "meuFallback",
             // pode ser a classe como abaixo, ou um método como acima,
-            value = MeuFallBack.class,
+            value = MeuFallBack.class
             // O Quarkus considera quando se é um Throwable, mas o OpenLiberty não
             // skipOn = MyThrowable.class,
-            applyOn = MyThrowable.class
+            //applyOn = MyThrowable.class
     )
     public String fallback(@QueryParam("erro") Boolean erro) throws Throwable {
         if (erro) {
-            //throw new Exception("Erro: " + atomicInteger.get());
-            throw new MyThrowable();
+            throw new Exception("Erro: " + atomicInteger.get());
+            //throw new MyThrowable();
         }
         return "Hello com fallback!";
     }
