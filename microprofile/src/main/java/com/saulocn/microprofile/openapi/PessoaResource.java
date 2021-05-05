@@ -15,6 +15,8 @@ import java.util.List;
 @Tag(name = "pessoa")
 public class PessoaResource {
 
+    public static final String SALVA_UMA_NOVA_PESSOA = "Salva uma nova pessoa";
+
     @GET
     public String buscarPessoas() {
         return "hello";
@@ -24,7 +26,7 @@ public class PessoaResource {
     @Operation(deprecated = false,
             description = "Salva uma nova pessoa. É permitido apenas maiores de idade",
             operationId = "meuID",
-            summary = "Salva uma nova pessoa"
+            summary = SALVA_UMA_NOVA_PESSOA
     )
     public SalvarPessoaDTO salvarPessoa(@RequestBody(description = "Descricao Bonita") SalvarPessoaDTO dto) {
         return null;
