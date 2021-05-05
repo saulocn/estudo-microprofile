@@ -11,7 +11,7 @@ import javax.ws.rs.core.Application;
 @OpenAPIDefinition(info = @Info(
         title = "Super Ultra Hiper Mega App Bla Bla Bla",
         version = "0.0.1",
-        description = "Propriedades de descrição da app",
+        //description = "Propriedades de descrição da app",
         contact = @Contact(
                 email = "xpto@mail.com",
                 name = "Saulo"
