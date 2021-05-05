@@ -5,6 +5,7 @@
     "upn": "outro upn",
     "preferred_username": "Joao",
     "aud": "rbac",
+    "birthdate": "2001-07-13",
     "groups": [
         "proprietario"
     ]
