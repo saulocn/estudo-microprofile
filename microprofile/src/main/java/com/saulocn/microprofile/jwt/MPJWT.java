@@ -28,6 +28,7 @@ public class MPJWT {
     @Claim(value = "sub", standard = Claims.preferred_username)
     Instance<String> nomeInst;
 
+    // Não funcionou no Quarkus
     //@Inject
     //@Claim(value = "sub", standard = Claims.preferred_username)
     //Optional<String> nomeOpt;
